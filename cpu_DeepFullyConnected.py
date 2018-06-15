@@ -10,7 +10,7 @@ import pickle
 from time import sleep
 import matplotlib.pyplot as plt
 from random import shuffle
-import cloudstorage as gcs
+import cloudstorage as gcs;
 
 sess = tf.InteractiveSession()
 
