@@ -10,12 +10,15 @@ import pickle
 from time import sleep
 import matplotlib.pyplot as plt
 from random import shuffle
+import cloudstorage as gcs
 
 sess = tf.InteractiveSession()
 
 # dataFile = '17MachineHourlyPeak7DaysInput'
-
-Data=sio.loadmat(open( "/Users/lori/Downloads/NNInput/"+dataFile+"-traintest.mat", "rb" ))
+filename = 'gs://polynomial-text-128814-ml/17MachineHourlyPeak7DaysInput-traintest.mat'
+with gcs.open(filename, 'r') as gcs_file:
+    Data=sio.loadmat(gcs_file)
+# Data=sio.loadmat(open( "/Users/lori/Downloads/NNInput/"+dataFile+"-traintest.mat", "rb" ))
 data = Data['trainInput']
 label = Data['trainLabel']
 
